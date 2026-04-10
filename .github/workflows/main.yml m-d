@@ -25,5 +25,4 @@ jobs:
         run: python app.py
 
       - name: Step 5 - Final message
-        run: echo "CI Pipeline Completed ✅"
-
+        run: echo "CI Pipeline Completed ✅"cccc
