@@ -1,0 +1,28 @@
+name: Final CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Show files
+        run: ls -la
+
+      - name: Run Python file
+        run: python3 app.py
+
+      - name: Done
+        run: echo "CI Pipeline Completed ✅"
