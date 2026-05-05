@@ -1,0 +1,33 @@
+name: Multi Environment Deploy
+
+on:
+  push:
+    branches:
+      - dev
+      - staging
+      - master
+
+jobs:
+  deploy-dev:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Dev
+        run: echo "Deploying to Dev Environment!"
+
+  deploy-staging:
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Staging
+        run: echo "Deploying to Staging Environment!"
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Production
+        run: echo "Deploying to Production!"
