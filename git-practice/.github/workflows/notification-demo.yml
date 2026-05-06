@@ -1,0 +1,23 @@
+name: Notification Demo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy karo
+        run: echo "Deploying..."
+
+      - name: Success Notification
+        if: success()
+        run: echo "✅ Deploy Successful! Email jayegi!"
+
+      - name: Failure Notification
+        if: failure()
+        run: echo "❌ Deploy Failed! Email jayegi!"
