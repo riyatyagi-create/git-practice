@@ -1,0 +1,26 @@
+name: Artifacts Demo
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: File banao
+        run: |
+          echo "Build Result!" > build-result.txt
+          echo "Test Passed!" > test-result.txt
+
+      - name: Artifact upload karo
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifacts
+          path: |
+            build-result.txt
+            test-result.txt
