@@ -1,0 +1,24 @@
+name: Testing Demo
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python setup karo
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Tests chalaao
+        run: python test_app.py
+
+      - name: Tests pass ho gayi!
+        run: echo "All Tests Passed! ✅"
