@@ -17,10 +17,12 @@ jobs:
         with:
           python-version: '3.11'
 
-    - name: Tests chalaao
-        run: |
-          ls -la
-          python test_app.py
+      - name: Files dekho
+        run: ls -la
+
+      - name: Tests chalaao
+        run: python test_app.py
 
       - name: Tests pass ho gayi!
-        run: echo "All Tests Passed! ✅"
+        run: echo "All Tests Passed!"
+          
