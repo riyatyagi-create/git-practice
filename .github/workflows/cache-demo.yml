@@ -1,0 +1,32 @@
+name: Cache Demo
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache setup karo
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Python setup karo
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Dependencies install karo
+        run: pip install requests
+
+      - name: Done
+        run: echo "Cache kaam kar raha hai!"
