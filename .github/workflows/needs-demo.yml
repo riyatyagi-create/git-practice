@@ -1,0 +1,28 @@
+name: Job Dependencies Demo
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build karo
+        run: echo "Building... ✅"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Test karo
+        run: echo "Testing... ✅"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Deploy karo
+        run: echo "Deploying... ✅"
