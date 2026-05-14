@@ -19,7 +19,7 @@ jobs:
           echo "Created by Riya!" >> dist/package.txt
 
       - name: Artifact upload karo
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: my-package
           path: dist/
