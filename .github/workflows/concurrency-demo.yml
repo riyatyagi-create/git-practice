@@ -1,0 +1,21 @@
+name: Concurrency Demo
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy karo
+        run: |
+          echo "Deploying..."
+          sleep 30
+          echo "Deploy complete!"
